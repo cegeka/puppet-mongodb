@@ -3,7 +3,7 @@ require 'spec_helper_acceptance'
 describe 'mongodb_database' do
   case fact('osfamily')
   when 'RedHat'
-    version = "'2.6.6-1'"
+    version = "'2.4.14-4'"
   when 'Debian'
     version = "'2.6.6'"
   end
