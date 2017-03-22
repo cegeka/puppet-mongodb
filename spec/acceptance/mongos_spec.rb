@@ -1,7 +1,10 @@
 require 'spec_helper_acceptance'
 
 describe 'mongodb::mongos class' do
-
+  before :all do
+    on hosts, 'puppet module install stahnma-epel --ignore-dependencies'
+    apply_manifest_on hosts, 'include epel'
+  end
   shared_examples 'normal tests' do |tengen|
     if tengen
       package_name = 'mongodb-org-mongos'

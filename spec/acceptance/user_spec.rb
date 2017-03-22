@@ -1,6 +1,12 @@
 require 'spec_helper_acceptance'
 
 describe 'mongodb_database' do
+  before :all do
+    #exec 'puppet module install stahnma-epel --ignore-dependencies'
+    #apply_manifest('include epel', :catch_failures => true)
+    on hosts, 'puppet module install stahnma-epel --ignore-dependencies'
+    apply_manifest_on hosts, 'include epel'
+  end
   case fact('osfamily')
   when 'RedHat'
     version = "'2.6.6-1'"
